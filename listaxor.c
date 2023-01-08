@@ -123,3 +123,30 @@ void listarInicioAFinal(Lista *L)
         printf("<--- Tail\n");
     }
 }
+
+// Funcion para listar de Final a Inicio (Imprimir de Derecha a Izquierda)
+
+void listarFinalAInicio(Lista *L)
+{
+    if (esVacia(L) == 1)
+    {
+        printf("La lista es vacia! No tiene elementos para listar...\n");
+        return;       
+    }
+    else
+    {
+        node *ptr_aux, *prev, *next;
+        ptr_aux = L->tail;
+        next = NULL;
+        printf("Tail ---> ");
+
+        while (ptr_aux != NULL)
+        {
+            printf("%d ", ptr_aux->data);
+            prev = XOR(next, ptr_aux->prev_next);
+            next = ptr_aux;
+            ptr_aux = prev;
+        }
+        printf("<--- Head\n");    
+    }
+}

@@ -38,3 +38,7 @@ int insertarFinal(Lista *L, int element);
 // Funcion para listar de Inicio a Final (Imprimir de Izquierda a Derecha)
 
 void listarInicioAFinal(Lista *L);
+
+// Funcion para listar de Final a Inicio (Imprimir de Derecha a Izquierda)
+
+void listarFinalAInicio(Lista *L);

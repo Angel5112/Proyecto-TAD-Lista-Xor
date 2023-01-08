@@ -6,6 +6,7 @@
 3. bool esVacia(Lista)
 5. bool InsertarFinal(Lista, elementoTipo)
 11. listarInicioAFinal(Lista)
+12. listarFinalAInicio(Lista)
 
 ### Funciones Faltantes:
 
@@ -16,7 +17,6 @@
 8. bool sacarPrincipio(Lista, elementoTipo)
 9. bool sacarFinal(Lista, elementoTipo)
 10. bool sacarPrimeraOcurrencia(Lista, elementoTipo)
-12. listarFinalAInicio(Lista)
 13. entero cantidadElementos(Lista)
 
 ### Bugs a Tomar en Cuenta:

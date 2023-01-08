@@ -93,8 +93,13 @@ int main(void)
                 }
                 else if (action == 10)
                 {
-                    printf("\nLa lista es:\n\n");
+                    printf("\nLa lista (De Inicio a Final) es:\n\n");
                     listarInicioAFinal(list);
+                }
+                else if (action == 11)
+                {
+                    printf("\nLa lista (De Final a Inicio) es:\n\n");
+                    listarFinalAInicio(list);
                 }
             
             boolean = -1;
