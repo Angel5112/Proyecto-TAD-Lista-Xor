@@ -26,3 +26,7 @@ Lista *crearLista(Lista *L);
 // Funcion para verificar si una Lista esta Vacia
 
 int esVacia(Lista *L);
+
+// Funcion para insertar un elemento al Final de la Lista
+
+int insertarFinal(Lista *L, int element);

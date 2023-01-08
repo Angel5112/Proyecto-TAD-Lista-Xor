@@ -5,7 +5,10 @@
 
 int main(void)
 {
-    int action, boolean;
+    int action, boolean, new_element;
+
+    action = -1;
+    
     printf("\nProyecto 2: TAD Lista XOR ~ Presentado por: Angel Patino y Leonardo Gonzalez\n");
     
     while (action != 0)
@@ -53,8 +56,25 @@ int main(void)
                     else
                         printf("\nLa lista esta Vacia!\n");
                 }
+                else if (action == 3)
+                {
+
+                }
+                else if (action == 4)
+                {
+                    printf("\nIngrese el nuevo elemento a introducir al final: ");
+                    scanf("%d", &new_element);
+                    boolean = insertarFinal(list, new_element);
+                    if (boolean == 0)
+                        printf("\nError: No se pudo insertar el elemento %d!\n", new_element);
+                    else
+                        printf("\nElemento %d insertado al final de la lista!\n", new_element);
+                }
+            
+            boolean = -1;
+
             }
-            action = boolean = -1;            
+            action = -1;            
         }
     }
 
