@@ -3,11 +3,11 @@
 ### Funciones Implementadas:
 
 1. Lista crearLista()
+3. bool esVacia(Lista)
 
 ### Funciones Faltantes:
 
 2. Inicializar(Lista)
-3. bool esVacia(Lista)
 4. bool InsertarPrincipio(Lista, elementoTipo)
 5. bool InsertarFinal(Lista, elementoTipo)
 6. bool InsertarOrden(Lista, elementoTipo)
