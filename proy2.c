@@ -59,7 +59,13 @@ int main(void)
                 }
                 else if (action == 3)
                 {
-
+                    printf("\nIngrese el nuevo elemento a introducir en el inicio: ");
+                    scanf("%d", &new_element);
+                    boolean = insertarPrincipio(list, new_element);
+                    if (boolean == 0)
+                        printf("\nError: No se pudo insertar el elemento %d!\n", new_element);
+                    else
+                        printf("\nElemento %d insertado en el inicio de la lista!\n", new_element);
                 }
                 else if (action == 4)
                 {

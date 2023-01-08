@@ -10,7 +10,7 @@ node *XOR(node *x, node *y)
     return (node*)((uintptr_t)(x) ^ (uintptr_t)(y));
 }
 
-// Funcion para Crear una nueva Lista
+// Funcion (Nro 1) para Crear una nueva Lista
 
 Lista *crearLista(Lista *L)
 {
@@ -24,7 +24,7 @@ Lista *crearLista(Lista *L)
     return L;   // Regresamos los cambios hechos a main
 }
 
-// Funcion para Inicializar una Lista (Eliminar todos sus elementos)
+// Funcion (Nro 2 NO COMPLETADA) para Inicializar una Lista (Eliminar todos sus elementos)
 
 void Inicializar(Lista *L)
 {
@@ -57,7 +57,7 @@ void Inicializar(Lista *L)
     }
 }
 
-// Funcion para verificar si una Lista esta Vacia
+// Funcion (Nro 3) para verificar si una Lista esta Vacia
 
 int esVacia(Lista *L)
 {
@@ -69,7 +69,36 @@ int esVacia(Lista *L)
         return 0;   // Si no esta vacia (Tiene minimo 1 un elemento), entonces retornara un 0 a boolean en main()
 }
 
-// Funcion para insertar un elemento al Final de la Lista
+// Funcion (Nro 4) para insertar un elemento al Inicio de la Lista
+
+int insertarPrincipio(Lista *L, int element)
+{
+    node *new_node, *ptr_next;
+    new_node = (node*)malloc(sizeof(node));
+
+    if (esVacia(L) == 1)
+    {
+        new_node->data = element;
+        new_node->prev_next = XOR(NULL, NULL);
+        L->head = L->tail = new_node;
+
+        return 1;
+    }
+    else if (esVacia(L) == 0)
+    {
+        new_node->data = element;
+        new_node->prev_next = XOR(NULL, L->head);
+        ptr_next = XOR(NULL, L->head->prev_next);
+        L->head->prev_next = XOR(new_node, ptr_next);
+        L->head = new_node;
+
+        return 1;
+    }
+    else
+        return 0;
+}
+
+// Funcion (Nro 5) para insertar un elemento al Final de la Lista
 
 int insertarFinal(Lista *L, int element)
 {
@@ -98,7 +127,7 @@ int insertarFinal(Lista *L, int element)
         return 0;
 }
 
-// Funcion para listar de Inicio a Final (Imprimir de Izquierda a Derecha)
+// Funcion (Nro 11) para listar de Inicio a Final (Imprimir de Izquierda a Derecha)
 
 void listarInicioAFinal(Lista *L)
 {
@@ -124,7 +153,7 @@ void listarInicioAFinal(Lista *L)
     }
 }
 
-// Funcion para listar de Final a Inicio (Imprimir de Derecha a Izquierda)
+// Funcion (Nro 12) para listar de Final a Inicio (Imprimir de Derecha a Izquierda)
 
 void listarFinalAInicio(Lista *L)
 {

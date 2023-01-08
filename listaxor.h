@@ -27,9 +27,13 @@ Lista *crearLista(Lista *L);
 
 void Inicializar(Lista *L);
 
-// Funcion (Nro 3)para verificar si una Lista esta Vacia
+// Funcion (Nro 3) para verificar si una Lista esta Vacia
 
 int esVacia(Lista *L);
+
+// Funcion (Nro 4) para insertar un elemento al Inicio de la Lista
+
+int insertarPrincipio(Lista *L, int element);
 
 // Funcion (Nro 5) para insertar un elemento al Final de la Lista
 
