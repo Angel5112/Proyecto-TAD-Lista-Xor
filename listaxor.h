@@ -18,3 +18,7 @@ typedef struct List
 // Funcion para hacer XOR entre direcciones de punteros (Usando la libreria <stdint.h>)
 
 node *XOR(node *x, node *y);
+
+// Funcion para Crear una nueva Lista
+
+Lista *crearLista(Lista *L);

@@ -1,8 +1,11 @@
 ## Proyecto 2: TAD Lista XOR
 
-### Funciones Faltantes:
+### Funciones Implementadas:
 
 1. Lista crearLista()
+
+### Funciones Faltantes:
+
 2. Inicializar(Lista)
 3. bool esVacia(Lista)
 4. bool InsertarPrincipio(Lista, elementoTipo)

@@ -18,6 +18,8 @@ int main(void)
 
         if (action == 1)
         {
+            Lista *list;
+            list = crearLista(list);
             while (action != 0)
             {
                 printf("\nUna nueva lista se ha creado!\n");
