@@ -24,6 +24,39 @@ Lista *crearLista(Lista *L)
     return L;   // Regresamos los cambios hechos a main
 }
 
+// Funcion para Inicializar una Lista (Eliminar todos sus elementos)
+
+void Inicializar(Lista *L)
+{
+    if (esVacia(L) == 1)
+    {
+        printf("La lista ya esta Vacia!\n");
+        return;
+    }
+    else
+    {
+        node *next, *prev, *ptr_aux;
+        prev = NULL;
+        ptr_aux = L->head;
+
+        while (ptr_aux != NULL)
+        {
+            node *aux_free;
+            printf("1\n");
+            aux_free = ptr_aux;
+            printf("2\n");
+            // Mejorar el free, hacer una funcion que haga free mas efectivo, o revisar el problema del next
+            next = XOR(prev, ptr_aux->prev_next);
+            printf("3\n");
+            ptr_aux = next;
+            printf("4\n");
+            free(aux_free);
+            printf("5\n");
+        }
+        L->head = L->tail = NULL;
+    }
+}
+
 // Funcion para verificar si una Lista esta Vacia
 
 int esVacia(Lista *L)

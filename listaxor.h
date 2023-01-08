@@ -23,6 +23,10 @@ node *XOR(node *x, node *y);
 
 Lista *crearLista(Lista *L);
 
+// Funcion para Inicializar una Lista (Eliminar todos sus elementos)
+
+void Inicializar(Lista *L);
+
 // Funcion para verificar si una Lista esta Vacia
 
 int esVacia(Lista *L);
