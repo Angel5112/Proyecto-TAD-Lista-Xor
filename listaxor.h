@@ -13,7 +13,7 @@ typedef struct Node
 typedef struct List
 {
     node *head, *tail;
-}list;
+}Lista;
 
 // Funcion para hacer XOR entre direcciones de punteros (Usando la libreria <stdint.h>)
 
