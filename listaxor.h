@@ -46,3 +46,7 @@ void listarInicioAFinal(Lista *L);
 // Funcion (Nro 12) para listar de Final a Inicio (Imprimir de Derecha a Izquierda)
 
 void listarFinalAInicio(Lista *L);
+
+// Funcion (Nro 13) para determinar la cantidad de elementos en la Lista.
+
+int cantidadElementos(Lista *L);

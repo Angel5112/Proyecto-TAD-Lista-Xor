@@ -179,3 +179,28 @@ void listarFinalAInicio(Lista *L)
         printf("<--- Head\n");    
     }
 }
+
+// Funcion (Nro 13) para determinar la cantidad de elementos en la Lista.
+
+int cantidadElementos(Lista *L)
+{
+    int element_count = 0;
+    node *ptr_aux, *ptr_prev, *ptr_next;
+    ptr_aux = L->head;
+    ptr_prev = NULL;
+
+    if (esVacia(L) == 1)
+        return element_count;
+    else
+    {
+        while (ptr_aux != NULL)
+        {
+            element_count += 1;
+            ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
+            ptr_prev = ptr_aux;
+            ptr_aux = ptr_next;
+        }
+
+        return element_count;
+    }
+}

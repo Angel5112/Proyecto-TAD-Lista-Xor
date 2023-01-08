@@ -5,7 +5,7 @@
 
 int main(void)
 {
-    int action, boolean, new_element;
+    int action, boolean, new_element, element_num;
 
     action = -1;
 
@@ -106,6 +106,11 @@ int main(void)
                 {
                     printf("\nLa lista (De Final a Inicio) es:\n\n");
                     listarFinalAInicio(list);
+                }
+                else if (action == 12)
+                {
+                    element_num = cantidadElementos(list);
+                    printf("\nLa cantidad de elementos es de: %d elementos en Lista!\n", element_num);
                 }
             
             boolean = -1;
