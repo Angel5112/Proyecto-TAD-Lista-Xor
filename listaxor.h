@@ -7,7 +7,7 @@
 typedef struct Node
 {
     int data;
-    Node *prev_next;
+    struct Node *prev_next;
 }node;
 
 typedef struct List
