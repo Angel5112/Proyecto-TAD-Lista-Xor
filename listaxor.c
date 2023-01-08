@@ -23,3 +23,15 @@ Lista *crearLista(Lista *L)
 
     return L;   // Regresamos los cambios hechos a main
 }
+
+// Funcion para verificar si una Lista esta Vacia
+
+int esVacia(Lista *L)
+{
+    // Si la Lista esta vacia (No tiene ningun elemento) entonces retornara un 1 a boolean en main()
+
+    if (L->head == NULL && L->tail == NULL)
+        return 1;
+    else
+        return 0;   // Si no esta vacia (Tiene minimo 1 un elemento), entonces retornara un 0 a boolean en main()
+}

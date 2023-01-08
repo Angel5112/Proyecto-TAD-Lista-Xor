@@ -5,7 +5,7 @@
 
 int main(void)
 {
-    int action;
+    int action, boolean;
     printf("\nProyecto 2: TAD Lista XOR ~ Presentado por: Angel Patino y Leonardo Gonzalez\n");
     
     while (action != 0)
@@ -20,9 +20,10 @@ int main(void)
         {
             Lista *list;
             list = crearLista(list);
+            printf("\nUna nueva lista se ha creado!\n");
+
             while (action != 0)
             {
-                printf("\nUna nueva lista se ha creado!\n");
                 printf("\nIndique la accion a realizar sobre la lista: \n\n");
                 printf("1. Inicializar Lista (Eliminar todos sus elementos).\n");
                 printf("2. Verificar si la Lista esta Vacia.\n");
@@ -39,8 +40,21 @@ int main(void)
                 printf("0. Volver al menu principal.\n\n");
                 printf("Accion: ");
                 scanf("%d", &action);
+
+                if (action == 1)
+                {
+                    
+                }
+                else if (action == 2)
+                {
+                    boolean = esVacia(list);
+                    if (boolean == 0)
+                        printf("\nLa lista NO esta Vacia!\n");
+                    else
+                        printf("\nLa lista esta Vacia!\n");
+                }
             }
-            action = -1;            
+            action = boolean = -1;            
         }
     }
 

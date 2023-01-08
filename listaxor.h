@@ -22,3 +22,7 @@ node *XOR(node *x, node *y);
 // Funcion para Crear una nueva Lista
 
 Lista *crearLista(Lista *L);
+
+// Funcion para verificar si una Lista esta Vacia
+
+int esVacia(Lista *L);
