@@ -19,26 +19,26 @@ typedef struct List
 
 node *XOR(node *x, node *y);
 
-// Funcion para Crear una nueva Lista
+// Funcion (Nro 1) para Crear una nueva Lista
 
 Lista *crearLista(Lista *L);
 
-// Funcion para Inicializar una Lista (Eliminar todos sus elementos)
+// Funcion (Nro 2 NO COMPLETADA) para Inicializar una Lista (Eliminar todos sus elementos)
 
 void Inicializar(Lista *L);
 
-// Funcion para verificar si una Lista esta Vacia
+// Funcion (Nro 3)para verificar si una Lista esta Vacia
 
 int esVacia(Lista *L);
 
-// Funcion para insertar un elemento al Final de la Lista
+// Funcion (Nro 5) para insertar un elemento al Final de la Lista
 
 int insertarFinal(Lista *L, int element);
 
-// Funcion para listar de Inicio a Final (Imprimir de Izquierda a Derecha)
+// Funcion (Nro 11) para listar de Inicio a Final (Imprimir de Izquierda a Derecha)
 
 void listarInicioAFinal(Lista *L);
 
-// Funcion para listar de Final a Inicio (Imprimir de Derecha a Izquierda)
+// Funcion (Nro 12) para listar de Final a Inicio (Imprimir de Derecha a Izquierda)
 
 void listarFinalAInicio(Lista *L);
