@@ -8,7 +8,7 @@ int main(void)
     int action, boolean, new_element;
 
     action = -1;
-    
+
     printf("\nProyecto 2: TAD Lista XOR ~ Presentado por: Angel Patino y Leonardo Gonzalez\n");
     
     while (action != 0)
@@ -69,6 +69,31 @@ int main(void)
                         printf("\nError: No se pudo insertar el elemento %d!\n", new_element);
                     else
                         printf("\nElemento %d insertado al final de la lista!\n", new_element);
+                }
+                else if (action == 5)
+                {
+
+                }
+                else if (action == 6)
+                {
+
+                }
+                else if (action == 7)
+                {
+
+                }
+                else if (action == 8)
+                {
+
+                }
+                else if (action == 9)
+                {
+
+                }
+                else if (action == 10)
+                {
+                    printf("\nLa lista es:\n\n");
+                    listarInicioAFinal(list);
                 }
             
             boolean = -1;

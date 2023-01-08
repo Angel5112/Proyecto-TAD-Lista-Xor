@@ -30,3 +30,7 @@ int esVacia(Lista *L);
 // Funcion para insertar un elemento al Final de la Lista
 
 int insertarFinal(Lista *L, int element);
+
+// Funcion para listar de Inicio a Final (Imprimir de Izquierda a Derecha)
+
+void listarInicioAFinal(Lista *L);

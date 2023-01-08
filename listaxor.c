@@ -64,3 +64,29 @@ int insertarFinal(Lista *L, int element)
     else
         return 0;
 }
+
+// Funcion para listar de Inicio a Final (Imprimir de Izquierda a Derecha)
+
+void listarInicioAFinal(Lista *L)
+{
+    if (esVacia(L) == 1)
+    {
+        printf("La lista es vacia! No tiene elementos para listar...\n");
+        return;
+    }
+    else
+    {
+        node *ptr_aux, *prev, *next;
+        prev = NULL;
+        printf("Head ---> ");
+        ptr_aux = L->head;
+        while (ptr_aux != NULL)
+        {
+            printf("%d ", ptr_aux->data);
+            next = XOR(prev, ptr_aux->prev_next);
+            prev = ptr_aux;
+            ptr_aux = next;
+        }
+        printf("<--- Tail\n");
+    }
+}
