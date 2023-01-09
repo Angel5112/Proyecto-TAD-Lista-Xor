@@ -83,7 +83,13 @@ int main(void)
                 }
                 else if (action == 6)
                 {
-
+                    printf("\nIngrese el elemento que desee buscar en la lista: ");
+                    scanf("%d", &new_element);
+                    boolean = buscar(list, new_element);
+                    if (boolean == 0)
+                        printf("\nEl elemento %d NO se encuentra en la lista!\n", new_element);
+                    else
+                        printf("\nElemento %d se encuentra en la lista!\n", new_element);
                 }
                 else if (action == 7)
                 {

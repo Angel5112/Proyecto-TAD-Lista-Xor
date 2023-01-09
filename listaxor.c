@@ -127,6 +127,34 @@ int insertarFinal(Lista *L, int element)
         return 0;
 }
 
+// Funcion (Nro 7) para buscar un elemento en la Lista
+
+int buscar(Lista *L, int element)
+{
+    if (esVacia(L) == 1)
+        return 0;
+    else
+    {
+        node * ptr_aux, *ptr_prev, *ptr_next;
+        ptr_aux = L->head;
+        ptr_prev = NULL;
+
+        while (ptr_aux != NULL)
+        {
+            if (ptr_aux->data == element)
+                return 1;
+            else
+            {
+                ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
+                ptr_prev = ptr_aux;
+                ptr_aux = ptr_next;
+            }
+        }
+
+        return 0;    // No se consigue el elemento tras iterar dentro de la lista, retornar 0
+    }
+}
+
 // Funcion (Nro 11) para listar de Inicio a Final (Imprimir de Izquierda a Derecha)
 
 void listarInicioAFinal(Lista *L)
