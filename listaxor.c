@@ -30,15 +30,17 @@ void Inicializar(Lista *L)
 {
     if (esVacia(L) == 1)
     {
+        // Verificar si la lista esta vacia para evitar hacer operaciones innecesarias
+
         printf("La lista ya esta Vacia!\n");
         return;
     }
     else
     {
         int element;
-        while (cantidadElementos(L) != 0)
+        while (cantidadElementos(L) != 0)   // Mientras la lista siga teniendo elementos, eliminar el final
             sacarFinal(L, &element);
-        L->head = L->tail = NULL;
+        L->head = L->tail = NULL;       // Asignar los punteros de Head y Tail a NULL
         return;
     }
 }
@@ -64,6 +66,8 @@ int insertarPrincipio(Lista *L, int element)
 
     if (esVacia(L) == 1)
     {
+        // Si la lista esta vacia, se crea un nuevo nodo y es asignado a Head y Tail de la lista
+
         new_node->data = element;
         new_node->prev_next = XOR(NULL, NULL);
         L->head = L->tail = new_node;
@@ -72,10 +76,10 @@ int insertarPrincipio(Lista *L, int element)
     }
     else if (esVacia(L) == 0)
     {
-        new_node->data = element;
-        new_node->prev_next = XOR(NULL, L->head);
-        ptr_next = XOR(NULL, L->head->prev_next);
-        L->head->prev_next = XOR(new_node, ptr_next);
+        new_node->data = element;   // Asignar el elemento al nodo
+        new_node->prev_next = XOR(NULL, L->head);   // Asignarle la direccion en prev_next
+        ptr_next = XOR(NULL, L->head->prev_next);   // Tener referencia del siguiente a Head
+        L->head->prev_next = XOR(new_node, ptr_next);   // Asignar la direccion del nodo siguiente al nuevo como la siguiente de Head
         L->head = new_node;
 
         return 1;
@@ -93,19 +97,21 @@ int insertarFinal(Lista *L, int element)
 
     if (esVacia(L) == 1)
     {
+        // Si la lista esta vacia, el nuevo nodo sera el unico elemento de la lista
+
         new_node->data = element;
         new_node->prev_next = XOR(NULL, NULL);
-        L->head = L->tail = new_node;
+        L->head = L->tail = new_node;       // Tanto Head como Tail apuntaran al nuevo nodo
 
         return 1;
     }
     else if (esVacia(L) == 0)
     {
         new_node->data = element;
-        new_node->prev_next = XOR(L->tail, NULL);
-        ptr_prev = XOR(L->tail->prev_next, NULL);
-        L->tail->prev_next = XOR(ptr_prev, new_node);
-        L->tail = new_node;
+        new_node->prev_next = XOR(L->tail, NULL);   // Prev_next del nuevo nodo guardara la posicion de Tail
+        ptr_prev = XOR(L->tail->prev_next, NULL);   // Guardar referencia del nodo anterior a Tail
+        L->tail->prev_next = XOR(ptr_prev, new_node);  // Asignar la direccion del anterior al nuevo nodo 
+        L->tail = new_node;                         // La nueva Tail sera el nuevo nodo
 
         return 1;
     }
@@ -122,16 +128,16 @@ int buscar(Lista *L, int element)
     else
     {
         node * ptr_aux, *ptr_prev, *ptr_next;
-        ptr_aux = L->head;
+        ptr_aux = L->head;  // Se comenzara la busqueda desde la Head
         ptr_prev = NULL;
 
-        while (ptr_aux != NULL)
+        while (ptr_aux != NULL) // Mientras el elemento actual, no sea NULL, recorrer la lista
         {
-            if (ptr_aux->data == element)
+            if (ptr_aux->data == element)   // Si un elemento en la lista coincide con el elemento a buscar, se retorna 1
                 return 1;
             else
             {
-                ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
+                ptr_next = XOR(ptr_prev, ptr_aux->prev_next);   // Si no se consigue en ese nodo, iterar al siguiente
                 ptr_prev = ptr_aux;
                 ptr_aux = ptr_next;
             }
@@ -145,7 +151,7 @@ int buscar(Lista *L, int element)
 
 int sacarPrincipio(Lista *L, int *element)
 {
-    if (esVacia(L) == 1)
+    if (esVacia(L) == 1)    // Si la lista es vacia, no se puede eliminar nada
         return 0;
     else
     {
@@ -153,7 +159,7 @@ int sacarPrincipio(Lista *L, int *element)
         ptr_prev = NULL;
         ptr_aux = L->head;
 
-        if (L->head == L->tail)
+        if (L->head == L->tail) // Si la Head apunta al mismo nodo que la Tail, se elimina el unico nodo de la lista
         {
             *element = L->head->data;
             free(ptr_aux);
@@ -162,17 +168,17 @@ int sacarPrincipio(Lista *L, int *element)
 
             return 1;
         }
-        else
+        else    // Se guarda la referencia al siguiente de la Head y se le asigna un puntero a Head
         {
             *element = L->head->data;
             ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
             ptr_free = ptr_aux;
-            ptr_aux = ptr_next;
+            ptr_aux = ptr_next; // Se mueve el puntero auxiliar al siguiente de Head
             ptr_prev = ptr_free;
-            L->head = ptr_aux;
-            ptr_aux->prev_next = XOR(ptr_prev, L->head->prev_next);
+            L->head = ptr_aux;  // Se asigna la nueva Head
+            ptr_aux->prev_next = XOR(ptr_prev, L->head->prev_next); // Se actualiza el prev_next de la nueva Head
             ptr_prev = NULL;
-            free(ptr_free);
+            free(ptr_free);     // Liberar el nodo guardado en la anterior Head
 
             return 1;
         }
@@ -183,7 +189,7 @@ int sacarPrincipio(Lista *L, int *element)
 
 int sacarFinal(Lista *L, int *element)
 {
-    if (esVacia(L) == 1)
+    if (esVacia(L) == 1)    // Si la lista esta vacia, no se puede hacer nada
         return 0;
     else
     {
@@ -191,7 +197,7 @@ int sacarFinal(Lista *L, int *element)
         ptr_next = NULL;
         ptr_aux = L->tail;
 
-        if (L->head == L->tail)
+        if (L->head == L->tail) // Si la Head apunta al mismo nodo que Tail, se elimina el unico nodo de la lista
         {
             *element = L->head->data;
             free(ptr_aux);
@@ -203,14 +209,14 @@ int sacarFinal(Lista *L, int *element)
         else
         {
             *element = L->tail->data;
-            ptr_prev = XOR(L->tail->prev_next, ptr_next);
-            ptr_free = ptr_aux;
-            ptr_aux = ptr_prev;
-            L->tail = ptr_aux;
+            ptr_prev = XOR(L->tail->prev_next, ptr_next);   // Guardar la referencia del anterior a Tail
+            ptr_free = ptr_aux;     // Asignar un puntero a Tail
+            ptr_aux = ptr_prev; // Mover el puntero original al anterior a Tail
+            L->tail = ptr_aux;  // Reasignar Tail
             ptr_next = ptr_free;
-            ptr_aux->prev_next = XOR(L->tail->prev_next, ptr_next);
-            ptr_next = NULL;
-            free(ptr_free);
+            ptr_aux->prev_next = XOR(L->tail->prev_next, ptr_next); // Ajustar el prev_next del anterior al antiguo Tail
+            ptr_next = NULL;    
+            free(ptr_free);     // Eliminar el nodo que era la anterior Tail
 
             return 1;
         }
@@ -221,7 +227,7 @@ int sacarFinal(Lista *L, int *element)
 
 void listarInicioAFinal(Lista *L)
 {
-    if (esVacia(L) == 1)
+    if (esVacia(L) == 1)    // Si la lista esta vacia, no se puede imprimir nada
     {
         printf("La lista es vacia! No tiene elementos para listar...\n");
         return;
@@ -232,10 +238,10 @@ void listarInicioAFinal(Lista *L)
         prev = NULL;
         printf("Head ---> ");
         ptr_aux = L->head;
-        while (ptr_aux != NULL)
+        while (ptr_aux != NULL) // Imprimir elemento a elemento de la lista mientras que el puntero auxiliar != NULL
         {
             printf("%d ", ptr_aux->data);
-            next = XOR(prev, ptr_aux->prev_next);
+            next = XOR(prev, ptr_aux->prev_next);   // Iterar de derecha a izquierda
             prev = ptr_aux;
             ptr_aux = next;
         }
@@ -247,7 +253,7 @@ void listarInicioAFinal(Lista *L)
 
 void listarFinalAInicio(Lista *L)
 {
-    if (esVacia(L) == 1)
+    if (esVacia(L) == 1)    // Si la lista esta vacia, no se puede imprimir nada
     {
         printf("La lista es vacia! No tiene elementos para listar...\n");
         return;       
@@ -259,7 +265,7 @@ void listarFinalAInicio(Lista *L)
         next = NULL;
         printf("Tail ---> ");
 
-        while (ptr_aux != NULL)
+        while (ptr_aux != NULL) // Imprimir elemento a elemento de la lista mientras que el puntero auxiliar != NULL
         {
             printf("%d ", ptr_aux->data);
             prev = XOR(next, ptr_aux->prev_next);
@@ -279,11 +285,11 @@ int cantidadElementos(Lista *L)
     ptr_aux = L->head;
     ptr_prev = NULL;
 
-    if (esVacia(L) == 1)
+    if (esVacia(L) == 1)    // Si es vacia, entonces tiene 0 elementos
         return element_count;
     else
     {
-        while (ptr_aux != NULL)
+        while (ptr_aux != NULL) // Recorrer la lista y usar un contador elemento por elemento
         {
             element_count += 1;
             ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
