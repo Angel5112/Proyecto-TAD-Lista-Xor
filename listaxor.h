@@ -43,6 +43,10 @@ int insertarFinal(Lista *L, int element);
 
 int buscar(Lista *L, int element);
 
+// Funcion (Nro 8) para sacar el elemento del inicio en la Lista
+
+int sacarPrincipio(Lista *L, int *element);
+
 // Funcion (Nro 9) para sacar el elemento del final en la Lista
 
 int sacarFinal(Lista *L, int *element);

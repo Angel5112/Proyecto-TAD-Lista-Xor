@@ -24,7 +24,7 @@ Lista *crearLista(Lista *L)
     return L;   // Regresamos los cambios hechos a main
 }
 
-// Funcion (Nro 2 NO COMPLETADA) para Inicializar una Lista (Eliminar todos sus elementos)
+// Funcion (Nro 2) para Inicializar una Lista (Eliminar todos sus elementos)
 
 void Inicializar(Lista *L)
 {
@@ -138,6 +138,44 @@ int buscar(Lista *L, int element)
         }
 
         return 0;    // No se consigue el elemento tras iterar dentro de la lista, retornar 0
+    }
+}
+
+// Funcion (Nro 8) para sacar el elemento del inicio en la Lista
+
+int sacarPrincipio(Lista *L, int *element)
+{
+    if (esVacia(L) == 1)
+        return 0;
+    else
+    {
+        node *ptr_aux, *ptr_free, *ptr_prev, *ptr_next;
+        ptr_prev = NULL;
+        ptr_aux = L->head;
+
+        if (L->head == L->tail)
+        {
+            *element = L->head->data;
+            free(ptr_aux);
+            L->head = NULL;
+            L->tail = NULL;
+
+            return 1;
+        }
+        else
+        {
+            *element = L->head->data;
+            ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
+            ptr_free = ptr_aux;
+            ptr_aux = ptr_next;
+            ptr_prev = ptr_free;
+            L->head = ptr_aux;
+            ptr_aux->prev_next = XOR(ptr_prev, L->head->prev_next);
+            ptr_prev = NULL;
+            free(ptr_free);
+
+            return 1;
+        }
     }
 }
 

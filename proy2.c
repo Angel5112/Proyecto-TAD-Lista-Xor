@@ -93,7 +93,12 @@ int main(void)
                 }
                 else if (action == 7)
                 {
-
+                    int pop_element;
+                    boolean = sacarPrincipio(list, &pop_element);
+                    if (boolean == 0)
+                        printf("\nEl elemento del inicio no se ha podida eliminar, la lista esta vacia!\n");
+                    else
+                        printf("\nEl elemento %d ha sido removido del inicio de la lista!\n", pop_element);
                 }
                 else if (action == 8)
                 {
