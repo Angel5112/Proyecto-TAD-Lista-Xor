@@ -3,6 +3,7 @@
 ### Funciones Implementadas:
 
 1. Lista crearLista()
+2. Inicializar(Lista)
 3. bool esVacia(Lista)
 4. bool InsertarPrincipio(Lista, elementoTipo)
 5. bool InsertarFinal(Lista, elementoTipo)
