@@ -15,7 +15,6 @@
 
 ### Funciones Faltantes:
 
-2. Inicializar(Lista)
 6. bool InsertarOrden(Lista, elementoTipo)
 8. bool sacarPrincipio(Lista, elementoTipo)
 10. bool sacarPrimeraOcurrencia(Lista, elementoTipo)
