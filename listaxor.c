@@ -155,6 +155,44 @@ int buscar(Lista *L, int element)
     }
 }
 
+// Funcion (Nro 9) para sacar el elemento del final en la Lista
+
+int sacarFinal(Lista *L, int *element)
+{
+    if (esVacia(L) == 1)
+        return 0;
+    else
+    {
+        node *ptr_aux, *ptr_free, *ptr_prev, *ptr_next;
+        ptr_next = NULL;
+        ptr_aux = L->tail;
+
+        if (L->head == L->tail)
+        {
+            *element = L->head->data;
+            free(ptr_aux);
+            L->head = NULL;
+            L->tail = NULL;
+
+            return 1;
+        }
+        else
+        {
+            *element = L->tail->data;
+            ptr_prev = XOR(L->tail->prev_next, ptr_next);
+            ptr_free = ptr_aux;
+            ptr_aux = ptr_prev;
+            L->tail = ptr_aux;
+            ptr_next = ptr_free;
+            ptr_aux->prev_next = XOR(L->tail->prev_next, ptr_next);
+            ptr_next = NULL;
+            free(ptr_free);
+
+            return 1;
+        }
+    }
+}
+
 // Funcion (Nro 11) para listar de Inicio a Final (Imprimir de Izquierda a Derecha)
 
 void listarInicioAFinal(Lista *L)

@@ -97,7 +97,12 @@ int main(void)
                 }
                 else if (action == 8)
                 {
-
+                    int pop_element;
+                    boolean = sacarFinal(list, &pop_element);
+                    if (boolean == 0)
+                        printf("\nEl elemento del final no se ha podida eliminar, la lista esta vacia!\n");
+                    else
+                        printf("\nEl elemento %d ha sido removido del final de la lista!\n", pop_element);
                 }
                 else if (action == 9)
                 {
