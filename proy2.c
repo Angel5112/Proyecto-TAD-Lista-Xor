@@ -47,7 +47,7 @@ int main(void)
                 if (action == 1)
                 {
                     Inicializar(list);
-                    printf("\nEliminado todos los elementos de la Lista!\n\n");
+                    printf("\nEliminado todos los elementos de la Lista!\n");
                 }
                 else if (action == 2)
                 {

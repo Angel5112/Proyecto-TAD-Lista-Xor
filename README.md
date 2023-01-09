@@ -21,4 +21,4 @@
 
 ### Bugs a Tomar en Cuenta:
 
-1. Funcion de Inicializar da Segmentation Fault
+1. Ninguno

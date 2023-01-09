@@ -35,25 +35,11 @@ void Inicializar(Lista *L)
     }
     else
     {
-        node *next, *prev, *ptr_aux;
-        prev = NULL;
-        ptr_aux = L->head;
-
-        while (ptr_aux != NULL)
-        {
-            node *aux_free;
-            printf("1\n");
-            aux_free = ptr_aux;
-            printf("2\n");
-            // Mejorar el free, hacer una funcion que haga free mas efectivo, o revisar el problema del next
-            next = XOR(prev, ptr_aux->prev_next);
-            printf("3\n");
-            ptr_aux = next;
-            printf("4\n");
-            free(aux_free);
-            printf("5\n");
-        }
+        int element;
+        while (cantidadElementos(L) != 0)
+            sacarFinal(L, &element);
         L->head = L->tail = NULL;
+        return;
     }
 }
 
