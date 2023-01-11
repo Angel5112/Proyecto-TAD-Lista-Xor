@@ -7,6 +7,7 @@
 3. bool esVacia(Lista)
 4. bool InsertarPrincipio(Lista, elementoTipo)
 5. bool InsertarFinal(Lista, elementoTipo)
+6. bool insertarOrden(Lista, elementoTipo)
 7. bool buscar(Lista, elementoTipo)
 8. bool sacarPrincipio(Lista, elementoTipo)
 9. bool sacarFinal(Lista, elementoTipo)
@@ -16,7 +17,6 @@
 
 ### Funciones Faltantes:
 
-6. bool InsertarOrden(Lista, elementoTipo)
 10. bool sacarPrimeraOcurrencia(Lista, elementoTipo)
 
 ### Bugs a Tomar en Cuenta:

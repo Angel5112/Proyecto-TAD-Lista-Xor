@@ -79,7 +79,13 @@ int main(void)
                 }
                 else if (action == 5)
                 {
-
+                    printf("\nIngrese el nuevo elemento a introducir de manera ordenada: ");
+                    scanf("%d", &new_element);
+                    boolean = insertarOrden(list, new_element);
+                    if (boolean == 0)
+                        printf("\nError: No se pudo insertar el elemento %d!\n", new_element);
+                    else
+                        printf("\nElemento %d insertado de manera ordenada en la lista!\n", new_element);
                 }
                 else if (action == 6)
                 {
