@@ -39,10 +39,6 @@ int insertarPrincipio(Lista *L, int element);
 
 int insertarFinal(Lista *L, int element);
 
-// Funcion (Nro 6) para insertar un elemento de manera ordenada en la Lista
-
-int insertarOrden(Lista *L, int element);
-
 // Funcion (Nro 7) para buscar un elemento en la Lista
 
 int buscar(Lista *L, int element);
