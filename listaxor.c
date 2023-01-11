@@ -7,6 +7,9 @@
 
 node *XOR(node *x, node *y)
 {
+    node *tmp_x, *tmp_y;
+    tmp_x = x;
+    tmp_y = y;
     return (node*)((uintptr_t)(x) ^ (uintptr_t)(y));
 }
 
@@ -238,12 +241,16 @@ void listarInicioAFinal(Lista *L)
         prev = NULL;
         printf("Head ---> ");
         ptr_aux = L->head;
+	int count;
+	count = 0;
         while (ptr_aux != NULL) // Imprimir elemento a elemento de la lista mientras que el puntero auxiliar != NULL
         {
+            /* printf("%d-", count); */
             printf("%d ", ptr_aux->data);
             next = XOR(prev, ptr_aux->prev_next);   // Iterar de derecha a izquierda
             prev = ptr_aux;
             ptr_aux = next;
+	    count++;
         }
         printf("<--- Tail\n");
     }
@@ -299,4 +306,143 @@ int cantidadElementos(Lista *L)
 
         return element_count;
     }
+}
+
+// Verificar si los elementos de la lista estan ordenados
+
+int estaOrdenada(Lista *L) {
+    node *ptr_aux, *ptr_prev, *ptr_next;
+    ptr_aux = L->head;
+    ptr_prev = NULL;
+
+    if (esVacia(L) == 1)    // Si es vacia, entonces tiene 0 elementos
+        return 1;
+    else
+    {
+        while (ptr_aux != NULL)
+        {
+	    if (ptr_prev != NULL && ptr_aux != NULL && ptr_prev->data > ptr_aux->data)
+		return 0;
+            ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
+            ptr_prev = ptr_aux;
+            ptr_aux = ptr_next;
+        }
+
+        return 1;
+    }
+}
+
+int obtenerSiguiente(Lista *L, int element) {
+    node *ptr_aux, *ptr_prev, *ptr_next;
+    ptr_aux = L->head;
+    ptr_prev = NULL;
+    int menor;
+    menor = 0;
+
+    while (ptr_aux != NULL) {
+	if (menor == 0 && element < ptr_aux->data)
+	    menor = ptr_aux->data;
+	else if (ptr_aux->data < menor && element < ptr_aux->data)
+	    menor = ptr_aux->data;
+	ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
+	ptr_prev = ptr_aux;
+	ptr_aux = ptr_next;
+    }
+    return menor;
+} 
+
+Lista *ordenarLista(Lista *L) {
+    int last;
+    last = 0;
+
+    Lista *new_list;
+    new_list = crearLista(new_list);
+
+    for (int i=0; i<cantidadElementos(L); i++) {
+	last = obtenerSiguiente(L, last);
+	insertarFinal(new_list, last);
+    }
+
+    return new_list;
+}
+
+// Funcion (Nro 14) para agregar un elemento en la lista en posicion ordenada.
+
+int insertarOrden(Lista *L, int element) {
+    node *ptr_aux, *ptr_prev, *ptr_next;
+    ptr_aux = L->head;
+    ptr_prev = NULL;
+
+    if (esVacia(L) == 1)
+	return insertarPrincipio(L, element);
+
+    while (ptr_aux != NULL)
+    {
+	ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
+	if (ptr_next == NULL)  // Insertar al final de la lista
+	    return insertarFinal(L, element);
+	if (ptr_next->data > element) {  // Insertar antes de primera ocurrencia mayor
+	    if (ptr_prev == NULL)  // Insertar al principio de la lista
+		return insertarPrincipio(L, element);
+
+	    node *new_node;  // Insertar entre dos elementos
+	    new_node = (node*)malloc(sizeof(node));
+	    new_node->data = element;   // Asignar el elemento al nodo
+	    new_node->prev_next = XOR(ptr_aux, ptr_next);   // Asignarle la direccion en prev_next
+	    
+	    // Ajustar enlace del elemento anterior
+	    ptr_aux->prev_next = XOR(ptr_prev, new_node);
+	    
+	    // Ajustar enlace del elemento siguiente
+	    node *ptr_next_t_next;
+	    ptr_next_t_next = XOR(ptr_aux, ptr_next->prev_next);
+	    ptr_next->prev_next = XOR(new_node, ptr_next_t_next);
+
+	    return 1;					    
+	}
+	ptr_prev = ptr_aux;
+	ptr_aux = ptr_next;
+    }
+
+    return 0;
+}
+
+int sacarPrimeraOcurrencia(Lista *L, int element) {
+    node *ptr_aux, *ptr_prev, *ptr_next, *ptr_free;
+    ptr_aux = L->head;
+    ptr_prev = NULL;
+    int aux_element;
+
+    if (esVacia(L) == 1)
+	return 1;
+
+    while (ptr_aux != NULL)
+    {
+	ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
+	if (ptr_aux->data == element && ptr_next == NULL) 
+	    return sacarFinal(L, &aux_element);
+	if (ptr_aux->data == element) {
+	    if (ptr_prev == NULL)
+		return sacarPrincipio(L, &aux_element);
+
+	    // Ajustar enlace del elemento anterior
+	    node *ptr_prev_t_prev;
+	    ptr_prev_t_prev = XOR(ptr_aux, ptr_prev->prev_next);
+	    ptr_prev->prev_next = XOR(ptr_prev_t_prev, ptr_next);
+	    
+	    // Ajustar enlace del elemento siguiente
+	    node *ptr_next_t_next;
+	    ptr_next_t_next = XOR(ptr_aux, ptr_next->prev_next);
+	    ptr_next->prev_next = XOR(ptr_prev, ptr_next_t_next);	
+
+            ptr_free = ptr_aux;
+            free(ptr_free);     // Liberar el nodo guardado en la anterior Head
+
+	    return 1;					    
+	}
+	ptr_prev = ptr_aux;
+	ptr_aux = ptr_next;
+    }
+
+    return 0;
 }

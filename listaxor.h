@@ -62,3 +62,13 @@ void listarFinalAInicio(Lista *L);
 // Funcion (Nro 13) para determinar la cantidad de elementos en la Lista.
 
 int cantidadElementos(Lista *L);
+
+// Funcion (Nro 14) para agregar un elemento en la lista en posicion especifica.
+
+int insertarOrden(Lista *L, int element);
+
+// Funcion (Nro 15) Remover de la lista la primera ocurrencia del elemento suministrado.
+
+int sacarPrimeraOcurrencia(Lista *L, int element);
+
+Lista *ordenarLista(Lista *L);

@@ -14,11 +14,6 @@
 12. listarFinalAInicio(Lista)
 13. entero cantidadElementos(Lista)
 
-### Funciones Faltantes:
-
-6. bool InsertarOrden(Lista, elementoTipo)
-10. bool sacarPrimeraOcurrencia(Lista, elementoTipo)
-
 ### Bugs a Tomar en Cuenta:
 
 1. Ninguno

@@ -79,7 +79,14 @@ int main(void)
                 }
                 else if (action == 5)
                 {
-
+		    list = ordenarLista(list);
+		    printf("\nIngrese el nuevo elemento a introducir de manera ordenada: ");
+                    scanf("%d", &new_element);
+		    boolean = insertarOrden(list, new_element);
+                    if (boolean == 0)
+                        printf("\nError: No se pudo insertar el elemento %d!\n", new_element);
+                    else
+                        printf("\nElemento %d insertado en la lista!\n", new_element);
                 }
                 else if (action == 6)
                 {
@@ -111,7 +118,13 @@ int main(void)
                 }
                 else if (action == 9)
                 {
-
+                    printf("\nIngrese el elemento que desee remover de la lista: ");
+                    scanf("%d", &new_element);
+                    boolean = sacarPrimeraOcurrencia(list, new_element);
+                    if (boolean == 0)
+                        printf("\nEl elemento no se ha podida eliminar, la lista esta vacia!\n");
+                    else
+                        printf("\nEl elemento %d ha sido removido de la lista!\n", new_element);
                 }
                 else if (action == 10)
                 {
