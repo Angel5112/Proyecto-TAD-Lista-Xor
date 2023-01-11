@@ -7,6 +7,7 @@
 3. bool esVacia(Lista)
 4. bool InsertarPrincipio(Lista, elementoTipo)
 5. bool InsertarFinal(Lista, elementoTipo)
+6. bool insertarOrden(Lista, elementoTipo)
 7. bool buscar(Lista, elementoTipo)
 8. bool sacarPrincipio(Lista, elementoTipo)
 9. bool sacarFinal(Lista, elementoTipo)

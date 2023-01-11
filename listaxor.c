@@ -122,6 +122,86 @@ int insertarFinal(Lista *L, int element)
         return 0;
 }
 
+// Funcion (Nro 6) para insertar un elemento de manera ordenada en la Lista
+
+int insertarOrden(Lista *L, int element)
+{
+    // CASO 1: Lista vacia
+
+    if (esVacia(L) == 1)
+    {
+        insertarPrincipio(L, element);
+        return 1;
+    }
+    else
+    {
+        // CASO 2: Lista de 1 solo elemento
+
+        if (L->head == L->tail)
+        {
+            if (element <= L->head->data)
+            {
+                insertarPrincipio(L, element);
+                return 1;
+            }
+            else
+            {
+                insertarFinal(L, element);
+                return 1;
+            }
+        }
+
+        // CASO 3: Elemento nuevo es menor que el primer elemento de la lista
+
+        if (element <= L->head->data)
+        {
+            insertarPrincipio(L, element);
+            return 1;
+        }
+
+        // Ojo, como se sabe que el elemento no es menor que el primero, es recomendable pasar de una al segundo elemento, asi se podra usar el ptr_prev->data para las comparaciones
+
+        node *ptr_aux, *ptr_prev, *ptr_next, *ptr_new, *ptr_prev2;
+
+        ptr_aux = L->head;
+        ptr_prev = NULL;
+        ptr_new = (node*)malloc(sizeof(node));
+        ptr_new->data = element;
+
+        ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
+        ptr_prev = ptr_aux;
+        ptr_aux = ptr_next;
+
+        while (ptr_aux != NULL)
+        {
+            // CASO 4: Nuevo nodo se encuentra entre 2 nodos
+
+            if (ptr_prev->data <= element && ptr_aux->data > element)
+            {
+                ptr_new->prev_next = XOR(ptr_prev, ptr_aux);
+                ptr_prev2 = XOR(ptr_prev->prev_next, ptr_aux);
+                ptr_prev->prev_next = XOR(ptr_prev2, ptr_new);
+                ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
+                ptr_aux->prev_next = XOR(ptr_new, ptr_next);
+
+                return 1;
+            }
+
+            ptr_next = XOR(ptr_prev, ptr_aux->prev_next);
+            ptr_prev = ptr_aux;
+            ptr_aux = ptr_next;
+
+            // CASO 5: Llegada a Tail que es menor que el nuevo elemento del nodo a insertar
+
+            if (ptr_aux == L->tail && element >= L->tail->data)
+            {
+                insertarFinal(L, element);
+                return 1;
+            }
+        }
+    }
+}
+
 // Funcion (Nro 7) para buscar un elemento en la Lista
 
 int buscar(Lista *L, int element)
@@ -252,7 +332,7 @@ void listarInicioAFinal(Lista *L)
             ptr_aux = next;
 	    count++;
         }
-        printf("<--- Tail\n");
+        printf("<--- End\n");
     }
 }
 
@@ -270,7 +350,7 @@ void listarFinalAInicio(Lista *L)
         node *ptr_aux, *prev, *next;
         ptr_aux = L->tail;
         next = NULL;
-        printf("Tail ---> ");
+        printf("End ---> ");
 
         while (ptr_aux != NULL) // Imprimir elemento a elemento de la lista mientras que el puntero auxiliar != NULL
         {
